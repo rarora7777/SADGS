@@ -75,10 +75,19 @@ benchmarks:
 
 Each scene should contain the standard COLMAP/benchmark files and an `images` directory.
 
+The MipNeRF360 scenes are hosted by the paper authors [here](https://jonbarron.info/mipnerf360/). You can find the
+SfM data sets for Tanks&Temples and Deep Blending
+[here](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/datasets/input/tandt_db.zip).
+
 ## Run
 
-Training commands are collected in [`run_train.sh`](run_train.sh). Before running it, edit the placeholders at the top
-of the file or export them in your shell:
+Training commands are collected in [`run_train.sh`](run_train.sh). All numbers reported in the paper are produced by
+this script.
+
+Note that we use different hyperparameters for different dataset types, such as indoor and outdoor scenes. For new
+scenes, please refer to `run_train.sh` for possible hyperparameter settings.
+
+Before running it, edit the placeholders at the top of the file or export them in your shell:
 
 ```bash
 export PROJECT_ROOT=/path/to/SADGS
@@ -97,6 +106,14 @@ bash run_train.sh
 The script trains, renders, and evaluates the configured scenes. Outputs are written under `output/<scene>`.
 
 To run a smaller subset, edit the scene arrays near the bottom of `run_train.sh`.
+
+## Acknowledgements
+
+This project is built upon [3DGS](https://github.com/graphdeco-inria/gaussian-splatting) and
+[FastGS](https://github.com/fastgs/FastGS). We extend our gratitude to all the authors for their outstanding
+contributions and excellent repositories.
+
+**License**: Please adhere to the licenses of 3DGS.
 
 ## Citation
 
