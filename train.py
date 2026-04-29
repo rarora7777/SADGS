@@ -341,7 +341,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
                     high_ratio[valid_mask] = gaussians.eta_high_count[valid_mask] / gaussians.accum_view_count[valid_mask]
                     low_ratio[valid_mask] = gaussians.eta_low_count[valid_mask] / gaussians.accum_view_count[valid_mask]
                     
-                    # 4. Split if consistently high eta across views (>50%)
+                    # 4. Split if consistently high eta across views 
                     split_mask = (high_ratio > opt.split_ratio_threshold) & is_grad_high
                     
                     # 5. Compute average high eta 3ch for densification guidance
@@ -349,7 +349,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
                     has_high = gaussians.eta_high_count > 0
                     avg_high_eta_3ch[has_high] = gaussians.eta_high_sum_3ch[has_high] / gaussians.eta_high_count[has_high].unsqueeze(1)
                     max_high_eta = gaussians.max_eta_3ch
-                    # 6. Prune if consistently low eta across views (>80%)
+                    # 6. Prune if consistently low eta across views 
                     prune_mask = (low_ratio > opt.prune_ratio_threshold) & valid_mask
 
                     # [NEW] Expand undersized Gaussians
@@ -370,7 +370,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
                         custom_split_mask=split_mask,
                         custom_prune_mask=prune_mask,
                         viewspace_points_indices=None,
-                        max_eta_3ch=max_high_eta  # Use average high eta for shaping the split
+                        max_eta_3ch=max_high_eta  # Use max high eta for shaping the split
                     )
                     
                     # Reset accumulators
