@@ -1,0 +1,4 @@
+# ninja log v5
+3	13643	1768744353954209513	/HPS/VisibilityLearning/work/Programs/FreqGS/submodules/simple-knn/build/temp.linux-x86_64-cpython-312/simple_knn.o	310f879c5e85d054
+2	20577	1768744360899509796	/HPS/VisibilityLearning/work/Programs/FreqGS/submodules/simple-knn/build/temp.linux-x86_64-cpython-312/ext.o	651cf0795267f386
+3	50647	1768744390943808785	/HPS/VisibilityLearning/work/Programs/FreqGS/submodules/simple-knn/build/temp.linux-x86_64-cpython-312/spatial.o	1f2fd5990d0a73c1

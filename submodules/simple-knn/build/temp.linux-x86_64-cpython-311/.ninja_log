@@ -1,0 +1,9 @@
+# ninja log v7
+7	16486	1763563518177741991	/HPS/VisibilityLearning/work/Programs/FastGS/submodules/simple-knn/build/temp.linux-x86_64-cpython-311/simple_knn.o	c2711ff159a7ed33
+4	26749	1763563518177741991	/HPS/VisibilityLearning/work/Programs/FastGS/submodules/simple-knn/build/temp.linux-x86_64-cpython-311/ext.o	61262f8e8b3dcf47
+8	63480	1763563518177741991	/HPS/VisibilityLearning/work/Programs/FastGS/submodules/simple-knn/build/temp.linux-x86_64-cpython-311/spatial.o	f03784b9e41cb7c0
+670	14169	1763566096985637569	/HPS/VisibilityLearning/work/Programs/FastGS/submodules/simple-knn/build/temp.linux-x86_64-cpython-311/simple_knn.o	ded5666616ee4099
+672	54795	1763566096985637569	/HPS/VisibilityLearning/work/Programs/FastGS/submodules/simple-knn/build/temp.linux-x86_64-cpython-311/spatial.o	cca7864648cd2d71
+742	14753	1763657651520269471	/HPS/VisibilityLearning/work/Programs/FastGS/submodules/simple-knn/build/temp.linux-x86_64-cpython-311/simple_knn.o	148447ccf2674c71
+740	21012	1763657651520269471	/HPS/VisibilityLearning/work/Programs/FastGS/submodules/simple-knn/build/temp.linux-x86_64-cpython-311/ext.o	26409efefee0665c
+743	50809	1763657651520269471	/HPS/VisibilityLearning/work/Programs/FastGS/submodules/simple-knn/build/temp.linux-x86_64-cpython-311/spatial.o	4e1790d8d7632bc
