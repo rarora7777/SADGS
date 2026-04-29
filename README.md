@@ -14,10 +14,10 @@ screen-space extent with local texture structure, then performs anisotropic spli
 [Linjie Lyu](https://linjielyu.github.io/),
 [Ayush Tewari](https://ayushtewari.com/),
 [Jianchun Chen](https://jcjackch.github.io/),
-[Thomas Leimkuehler](https://people.mpi-inf.mpg.de/~tleimkue/), and
+[Thomas Leimk&uuml;hler](https://people.mpi-inf.mpg.de/~tleimkue/), and
 [Christian Theobalt](https://people.mpi-inf.mpg.de/~theobalt/)
 
-Max Planck Institute for Informatics, Cambridge University, and Saarbruecken Research Center for Visual Computing,
+Max Planck Institute for Informatics, Cambridge University, and Saarbr&uuml;cken Research Center for Visual Computing,
 Interaction, and Artificial Intelligence (VIA).
 
 ## Installation
