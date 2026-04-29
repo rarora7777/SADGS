@@ -2,6 +2,8 @@
 
 SIGGRAPH 2026 Conference Track
 
+[Project page](https://vcai.mpi-inf.mpg.de/projects/SAD-GS/)
+
 This repository contains the code for **Faster 3D Gaussian Splatting Convergence via Structure-Aware Densification**.
 The method accelerates 3D Gaussian Splatting convergence by using multiscale image structure to guide Gaussian
 densification. Instead of relying only on screen-space positional gradients, it compares each Gaussian's projected
