@@ -3,9 +3,9 @@ set -e
 
 # Configure these paths before running, either by editing the placeholders below
 # or by exporting the variables in your shell.
-export PROJECT_ROOT="${PROJECT_ROOT:-/path/to/SADGS}"
+export PROJECT_ROOT="${/content/SADGS}"
 export MIPNERF360_DATASET="${MIPNERF360_DATASET:-/path/to/datasets/360_v2}"
-export TANDT_DB_DATASET="${TANDT_DB_DATASET:-/path/to/datasets/tandt_db/db}"
+export TANDT_DB_DATASET="${/root/.cache/kagglehub/datasets/thnhdg/tandt-db/versions/1}"
 export TANDT_DATASET="${TANDT_DATASET:-/path/to/datasets/tandt_db/tandt}"
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 
@@ -88,30 +88,30 @@ run_dataset_pipeline() {
     done
 }
 
-scenes_360_indoor=(
-    bonsai
-    counter
-    kitchen
-    room
-)
-run_dataset_pipeline "$MIPNERF360_DATASET" 2 "${scenes_360_indoor[@]}"
+# scenes_360_indoor=(
+#     bonsai
+#     counter
+#     kitchen
+#     room
+# )
+# run_dataset_pipeline "$MIPNERF360_DATASET" 2 "${scenes_360_indoor[@]}"
 
-echo "Running Configuration garden..."
-if [ ! -d "$MIPNERF360_DATASET" ]; then
-    echo "ERROR: MIPNERF360_DATASET does not exist: $MIPNERF360_DATASET"
-    exit 1
-fi
-OAR_JOB_ID=garden python train.py -s "$MIPNERF360_DATASET/garden" -i images --eval --adam_eps_order 10 --optimizer_type hybrid --split_ratio_threshold 0.4 --sample_bbox_faces --warmup_densification --mult 0.25 --iterations 3000 --position_lr_max_steps 3000 --opacity_reset_interval 1200 --densification_interval 500 --densify_until_iter 1900 --densify_from_iter 100 --save_iterations 3000 --prune_iterations 1900
-python render.py -m output/garden --skip_train --iteration 3000
-python metrics.py -m output/garden
+# echo "Running Configuration garden..."
+# if [ ! -d "$MIPNERF360_DATASET" ]; then
+#     echo "ERROR: MIPNERF360_DATASET does not exist: $MIPNERF360_DATASET"
+#     exit 1
+# fi
+# OAR_JOB_ID=garden python train.py -s "$MIPNERF360_DATASET/garden" -i images --eval --adam_eps_order 10 --optimizer_type hybrid --split_ratio_threshold 0.4 --sample_bbox_faces --warmup_densification --mult 0.25 --iterations 3000 --position_lr_max_steps 3000 --opacity_reset_interval 1200 --densification_interval 500 --densify_until_iter 1900 --densify_from_iter 100 --save_iterations 3000 --prune_iterations 1900
+# python render.py -m output/garden --skip_train --iteration 3000
+# python metrics.py -m output/garden
 
-scenes_360_outdoor=(
-    bicycle
-    stump
-    flowers
-    treehill
-)
-run_dataset_pipeline "$MIPNERF360_DATASET" 3 "${scenes_360_outdoor[@]}"
+# scenes_360_outdoor=(
+#     bicycle
+#     stump
+#     flowers
+#     treehill
+# )
+# run_dataset_pipeline "$MIPNERF360_DATASET" 3 "${scenes_360_outdoor[@]}"
 
 scenes_tandt_db=(
     drjohnson
@@ -119,8 +119,8 @@ scenes_tandt_db=(
 )
 run_dataset_pipeline "$TANDT_DB_DATASET" 4 "${scenes_tandt_db[@]}"
 
-scenes_tandt=(
-    train
-    truck
-)
-run_dataset_pipeline "$TANDT_DATASET" 1 "${scenes_tandt[@]}"
+# scenes_tandt=(
+#     train
+#     truck
+# )
+# run_dataset_pipeline "$TANDT_DATASET" 1 "${scenes_tandt[@]}"
