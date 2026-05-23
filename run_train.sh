@@ -3,9 +3,9 @@ set -e
 
 # Configure these paths before running, either by editing the placeholders below
 # or by exporting the variables in your shell.
-export PROJECT_ROOT="${/content/SADGS}"
+export PROJECT_ROOT=/content/SADGS
 export MIPNERF360_DATASET="${MIPNERF360_DATASET:-/path/to/datasets/360_v2}"
-export TANDT_DB_DATASET="${/root/.cache/kagglehub/datasets/thnhdg/tandt-db/versions/1}"
+export TANDT_DB_DATASET=/root/.cache/kagglehub/datasets/thnhdg/tandt-db/versions/1
 export TANDT_DATASET="${TANDT_DATASET:-/path/to/datasets/tandt_db/tandt}"
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 
