@@ -14,6 +14,7 @@
 #include <cuda.h>
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
+#include <cuda/std/functional>
 #include <cub/cub.cuh>
 #include <cooperative_groups.h>
 #include <cooperative_groups/reduce.h>
@@ -525,7 +526,7 @@ renderCUDA(
 	// max reduce the last contributor
     typedef cub::BlockReduce<uint32_t, BLOCK_X, cub::BLOCK_REDUCE_WARP_REDUCTIONS, BLOCK_Y> BlockReduce;
     __shared__ typename BlockReduce::TempStorage temp_storage;
-    last_contributor = BlockReduce(temp_storage).Reduce(last_contributor, cub::Max());
+    last_contributor = BlockReduce(temp_storage).Reduce(last_contributor, cuda::std::maximum<uint32_t>());
 	if (block.thread_rank() == 0) {
 		max_contrib[tile_id] = last_contributor;
 	}

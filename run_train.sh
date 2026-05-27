@@ -3,8 +3,8 @@ set -e
 
 # Configure these paths before running, either by editing the placeholders below
 # or by exporting the variables in your shell.
-export PROJECT_ROOT=/content/SADGS
-export MIPNERF360_DATASET="${MIPNERF360_DATASET:-/path/to/datasets/360_v2}"
+export PROJECT_ROOT=/home/ubuntu/SADGS
+export MIPNERF360_DATASET=/home/ubuntu/SADGS_Data/
 export TANDT_DB_DATASET=/root/.cache/kagglehub/datasets/thnhdg/tandt-db/versions/1
 export TANDT_DATASET="${TANDT_DATASET:-/path/to/datasets/tandt_db/tandt}"
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
@@ -94,7 +94,10 @@ run_dataset_pipeline() {
 #     kitchen
 #     room
 # )
-# run_dataset_pipeline "$MIPNERF360_DATASET" 2 "${scenes_360_indoor[@]}"
+scenes_360_indoor=(
+    bonsai
+)
+run_dataset_pipeline "$MIPNERF360_DATASET" 2 "${scenes_360_indoor[@]}"
 
 # echo "Running Configuration garden..."
 # if [ ! -d "$MIPNERF360_DATASET" ]; then
@@ -113,11 +116,11 @@ run_dataset_pipeline() {
 # )
 # run_dataset_pipeline "$MIPNERF360_DATASET" 3 "${scenes_360_outdoor[@]}"
 
-scenes_tandt_db=(
-    drjohnson
-    playroom
-)
-run_dataset_pipeline "$TANDT_DB_DATASET" 4 "${scenes_tandt_db[@]}"
+# scenes_tandt_db=(
+#     drjohnson
+#     playroom
+# )
+# run_dataset_pipeline "$TANDT_DB_DATASET" 4 "${scenes_tandt_db[@]}"
 
 # scenes_tandt=(
 #     train
