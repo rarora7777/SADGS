@@ -1,2 +1,4 @@
 **/*.pyc
 output/
+
+**/.DS_Store
