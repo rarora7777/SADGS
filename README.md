@@ -34,19 +34,19 @@ conda activate sadgs
 Install PyTorch and the Python dependencies:
 
 ```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install torch torchvision torchaudio
 pip install plyfile tqdm websockets
 ```
 
 Install the local CUDA/C++ extensions:
 
 ```bash
-pip install submodules/diff-gaussian-rasterization_structgs
-pip install submodules/simple-knn
-pip install submodules/fused-ssim
+pip install submodules/diff-gaussian-rasterization_structgs --no-build-isolation
+pip install submodules/simple-knn --no-build-isolation
+pip install submodules/fused-ssim --no-build-isolation
 ```
 
-If your CUDA toolkit or driver stack differs from CUDA 12.1, install the matching PyTorch build from the official
+If your CUDA toolkit or driver stack differs from CUDA 13.0, install the matching PyTorch build from the official
 PyTorch instructions before installing the local extensions.
 
 ## Datasets
