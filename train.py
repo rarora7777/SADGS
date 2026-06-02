@@ -9,31 +9,39 @@
 # For inquiries contact  george.drettakis@inria.fr
 #
 
-import torch
-import numpy as np
-import os, random, time
-from random import randint
-from lpipsPyTorch import lpips
-from utils.loss_utils import l1_loss,l2_loss, get_multiscale_structure_tensor_v1,get_multiscale_structure_tensor_v2
-from fused_ssim import fused_ssim as fast_ssim
-from gaussian_renderer import render_structgs, network_gui_ws
+import os
+import random
 import sys
-from scene import Scene, GaussianModel
-from utils.sh_utils import RGB2SH
-from utils.general_utils import safe_state
+import time
 import uuid
-from tqdm import tqdm
-from utils.image_utils import psnr
 from argparse import ArgumentParser, Namespace
-from arguments import ModelParams, PipelineParams, OptimizationParams
+
+import torch
+from fused_ssim import fused_ssim as fast_ssim # pylint: disable=import-error # type: ignore
+from tqdm import tqdm
+
+from arguments import ModelParams, OptimizationParams, PipelineParams
+from gaussian_renderer import network_gui_ws, render_structgs
+from lpipsPyTorch import lpips
+from scene import GaussianModel, Scene
+from utils.freq_utils import sampling_cameras, update_freq_stats_online
+from utils.general_utils import safe_state
+from utils.image_utils import psnr
+from utils.loss_utils import (
+    get_multiscale_structure_tensor_v1,
+    get_multiscale_structure_tensor_v2,
+    l1_loss,
+    l2_loss,
+)
+from utils.sh_utils import RGB2SH
+
 try:
     from torch.utils.tensorboard import SummaryWriter
     TENSORBOARD_FOUND = True
 except ImportError:
     TENSORBOARD_FOUND = False
 
-from utils.freq_utils import sampling_cameras, update_freq_stats_online
-import torch.nn.functional as F
+
 
 def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoint_iterations, checkpoint, debug_from, websockets, ply_path, prune_iterations):
     first_iter = 0
